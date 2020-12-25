@@ -5,6 +5,7 @@ package com.opensource.message.config;
  * @Content kafka配置对象
  * @CreateTime 2020/12/25
  */
-public class KafkaConfig {
-
+public class KafkaProductConfig {
+    //kafka集群地址
+    private String services;
 }
