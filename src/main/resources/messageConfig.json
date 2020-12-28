@@ -1,0 +1,8 @@
+{
+  "kafkaProductConfig": {
+    "bootstrap.servers": "121.4.71.84:9092",
+    "key.serializer": "org.apache.kafka.common.serialization.StringSerializer",
+    "value.serializer": "org.apache.kafka.common.serialization.StringSerializer",
+    "client.id": "demo"
+  }
+}
