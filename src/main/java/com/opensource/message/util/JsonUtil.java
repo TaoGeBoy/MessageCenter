@@ -2,7 +2,7 @@ package com.opensource.message.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.opensource.message.config.MessageConfigBean;
+import com.opensource.message.attribute.MessageConfigBean;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.BufferedReader;

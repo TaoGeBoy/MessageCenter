@@ -1,4 +1,4 @@
-package com.opensource.message.config;
+package com.opensource.message.attribute;
 
 import lombok.Data;
 
@@ -11,6 +11,6 @@ import java.util.Map;
  */
 @Data
 public class MessageConfigBean {
-    private Map<String,Object> kafkaProductConfig;
+    private KafkaAttribute kafkaAttribute;
 }
 
