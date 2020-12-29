@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutionException;
  * @Content
  * @CreateTime 2020/12/25
  */
-public interface KafkaSession{
+public interface KafkaConSession {
     //发送同步消息
     boolean sendMessage(String topic, String value) throws ExecutionException, InterruptedException;
 }

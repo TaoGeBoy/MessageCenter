@@ -1,15 +1,15 @@
 package com.opensource.message.session.defalut.factory;
 
+import com.opensource.message.attribute.KafkaProductAttribute;
 import com.opensource.message.attribute.MessageConfigBean;
 import com.opensource.message.exception.NoFindConfigException;
-import com.opensource.message.session.KafkaSession;
+import com.opensource.message.session.KafkaConSession;
+import com.opensource.message.session.KafkaProSession;
 import com.opensource.message.session.SessionFactory;
-import com.opensource.message.session.defalut.connect.DefaultKafkaSession;
+import com.opensource.message.session.defalut.connect.DefaultKafkaProSession;
 import com.opensource.message.util.JsonUtil;
-import org.apache.kafka.clients.producer.KafkaProducer;
 
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * @author 戴涛
@@ -26,19 +26,26 @@ public class KafkaSessionFactory implements SessionFactory {
         return this;
     }
 
-    public KafkaSession openKafkaSession() throws NoFindConfigException {
+    @Override
+    public KafkaProSession openProductSession() throws NoFindConfigException {
         return createKafkaSession();
     }
 
-    private KafkaSession createKafkaSession() throws NoFindConfigException {
-        Map<String,Object> kafkaProductConfig = messageConfigBean.getKafkaAttribute().toMap();
-        if(kafkaProductConfig == null){
+    @Override
+    public KafkaConSession openConsumerSession() throws NoFindConfigException {
+        return null;
+    }
+
+
+    private KafkaProSession createKafkaSession() throws NoFindConfigException {
+        KafkaProductAttribute kafkaProductAttribute = messageConfigBean.getKafkaProductAttribute();
+        if (kafkaProductAttribute == null) {
             throw new NoFindConfigException();
         }
         //将配置文件转换成Map生成Kafka连接对象
-        KafkaProducer<String,String> kafkaProducer = new KafkaProducer<String, String>(kafkaProductConfig);
+        //KafkaProducer<String, String> kafkaProducer = new KafkaProducer<String, String>(kafkaProductConfig);
         //创建kafka会话器
-        DefaultKafkaSession kafkaSession = new DefaultKafkaSession(kafkaProducer);
-        return kafkaSession;
+        DefaultKafkaProSession kafkaProSession = new DefaultKafkaProSession(kafkaProductAttribute);
+        return kafkaProSession;
     }
 }

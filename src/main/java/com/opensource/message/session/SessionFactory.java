@@ -8,5 +8,6 @@ import com.opensource.message.exception.NoFindConfigException;
  * @CreateTime 2020/12/25
  */
 public interface SessionFactory {
-    public KafkaSession openKafkaSession() throws NoFindConfigException;
+    public KafkaProSession openProductSession() throws NoFindConfigException;
+    public KafkaConSession openConsumerSession() throws NoFindConfigException;
 }

@@ -15,9 +15,9 @@ public class KafkaProductAttribute {
     //kafka集群地址
     private String bootstrap_servers;
     //Key反序列化类
-    private String key_seserializer;
+    private String key_serializer;
     //value反序列化类
-    private String value_seserializer;
+    private String value_serializer;
     //客户端ID
     private String client_id;
 
@@ -25,8 +25,8 @@ public class KafkaProductAttribute {
     public Map<String,Object> toMap(){
         Map<String,Object> result = new HashMap<String, Object>();
         result.put("bootstrap.servers",this.getBootstrap_servers());
-        result.put("key.seserializer",this.getKey_seserializer());
-        result.put("value_seserializer",this.getValue_seserializer());
+        result.put("key.serializer",this.getKey_serializer());
+        result.put("value.serializer",this.getValue_serializer());
         result.put("client.id",this.getClient_id());
         return result;
     }
