@@ -2,7 +2,6 @@ package com.opensource.message.attribute;
 
 import lombok.Data;
 
-import java.util.Map;
 
 /**
  * @author 戴涛
@@ -11,6 +10,9 @@ import java.util.Map;
  */
 @Data
 public class MessageConfigBean {
-    private KafkaAttribute kafkaAttribute;
+    //kafka生产属性
+    private KafkaProductAttribute kafkaProductAttribute;
+    //kafka消费属性
+    private KafkaConsumerAttribute kafkaConsumerAttribute;
 }
 

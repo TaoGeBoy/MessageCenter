@@ -2,6 +2,7 @@ package com.opensource.message.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.opensource.message.attribute.KafkaProductAttribute;
 import com.opensource.message.attribute.MessageConfigBean;
 import org.springframework.core.io.ClassPathResource;
 
@@ -50,10 +51,11 @@ public class JsonUtil {
         MessageConfigBean messageConfigBean = new MessageConfigBean();
         String configString = JsonToString(filePath);
         //转换成JSON对象
-        JSONObject jsonObject = JSONObject.parseObject(JsonToString("messageConfig.json"));
+        JSONObject jsonObject = JSONObject.parseObject(configString);
+        //kafka属性赋值
         if (jsonObject.get("kafkaProductConfig") != null) {
-            Map<String,Object> kafkaProductConfig = JSON.parseObject(jsonObject.get("kafkaProductConfig").toString(), Map.class);
-            messageConfigBean.setKafkaProductConfig(kafkaProductConfig);
+            KafkaProductAttribute kafkaProductConfig = JSON.parseObject(jsonObject.get("kafkaProductConfig").toString(), KafkaProductAttribute.class);
+            messageConfigBean.setKafkaProductAttribute(kafkaProductConfig);
         }
         return messageConfigBean;
     }
